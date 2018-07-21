@@ -3,7 +3,7 @@ Name: PowerFlashlight113
 Depends: mobilesubstrate
 Version: 1.0
 Architecture: iphoneos-arm
-Description: Hold the power/lock button to toggle the flashlight
+Description: Hold the power/lock button to toggle the flashlight!
 Maintainer: JC Snider
 Author: JC Snider
 Section: Tweaks

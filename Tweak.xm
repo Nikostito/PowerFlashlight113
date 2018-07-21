@@ -1,4 +1,5 @@
 #import "AVFlashlight.h"
+#import <AudioToolbox/AudioServices.h>
 @interface SpringBoard : NSObject
 -(BOOL)_handlePhysicalButtonEvent:(id)arg1 ;
 -(void)_simulateHomeButtonPress;
@@ -52,14 +53,11 @@ return _sharedFlashlight;
 
         if(type == 104 && force == 0) //Power RELEASED
         {
-            if (pressed) {
-                //Lock device
-                [(SpringBoard *)[%c(SpringBoard) sharedApplication] _simulateLockButtonPress];
-            }
             if (pressedTimer != nil) {
                 [pressedTimer invalidate];
                 pressedTimer = nil;
             }
+            pressed = NO;
         }
 
 		return %orig;
@@ -75,6 +73,9 @@ return _sharedFlashlight;
             else {
                 [_sharedFlashlight setFlashlightLevel:1.0 withError:nil];
             }
+            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                AudioServicesDisposeSystemSoundID(kSystemSoundID_Vibrate);
+            });
             pressed = NO;
         }
     }
