@@ -4,7 +4,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = PowerFlashlight113
 PowerFlashlight113_FILES = Tweak.xm
-PowerFlashlight113_PRIVATE_FRAMEWORKS = AppSupport
+PowerFlashlight113_PRIVATE_FRAMEWORKS = AppSupport AVFoundation
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
